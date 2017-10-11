@@ -113,8 +113,9 @@ class Comm_Generic:
             self.comm_socket.close()
         except socket.error as e:
             publish_error_to_browser_e(self.comm_type + "()::close()", e)
+            return "ERROR"
 
-        return
+        return "OK"
 
     def receive(self):
 
