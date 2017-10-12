@@ -59,6 +59,7 @@
 import sys
 import cgitb
 import socket
+import time
 
 cgitb.enable()
 
@@ -357,8 +358,7 @@ def receive_server_send_browser():
     print("Content-Type: text/event-stream\n\n")
     sys.stdout.flush()
 
-    #easier to count down...
-    icount = 20000
+    timeBegin = time.time()
 
     while True:
         s_event = dataComm.receive()
@@ -370,10 +370,10 @@ def receive_server_send_browser():
         print(s_event)
         sys.stdout.flush()
 
-
-        icount = icount - 1
-        if icount == 0:
-            icount = 20000
+        #send out a RUNNNG message every 10 seconds....
+        timeNow = time.time()
+        if timeNow - timeBegin >= 10:
+            timeBegin = time.time()
             if dataComm.send("RUNNING ") != 0:
                 publish_error_to_browser(sPlace + " Unable to Send RUNNING Message")
                 dataComm.close()
