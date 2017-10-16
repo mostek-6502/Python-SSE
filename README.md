@@ -8,7 +8,7 @@ This program can only be used with permission from XEn, LLC.  Missouri, USA  (c)
 
 This Python script accepts fully formatted JSON messages from a server and
 immediately streams that data to a browser.  The browser uses a few lines of
-.js to place that data into theie correct locations.  Like this .py script, the .js
+.js to place that data into their correct locations.  Like this .py script, the .js
 in the browser is kept to a minimum in order to ensure greater performance.
 
 There are two UDP connections that handle server side communications
